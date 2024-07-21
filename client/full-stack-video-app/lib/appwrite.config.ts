@@ -1,4 +1,4 @@
-import { Account, Avatars, Client, Databases } from "react-native-appwrite";
+import { Account, Avatars, Client, Databases, Storage } from "react-native-appwrite";
 
 export const AppWriteConfig = {
     endpoint: 'https://cloud.appwrite.io/v1',
@@ -19,5 +19,6 @@ client
 const account = new Account(client);
 const avatars = new Avatars(client);
 const databases = new Databases(client);
+const storage = new Storage(client);
 
-export { AppWriteConfig as config, client, account, avatars, databases };
+export { AppWriteConfig as config, client, account, avatars, databases, storage };

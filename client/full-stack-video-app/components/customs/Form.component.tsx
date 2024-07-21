@@ -1,7 +1,6 @@
 import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
 import React, { useState } from "react";
 import { icons, images } from "@/constants";
-import CustomButton from "./CustomButton.component";
 
 const FormField: React.FC<{
   title: string;
@@ -23,7 +22,7 @@ const FormField: React.FC<{
   return (
     <View className={`space-y-2 ${otherStyles}`}>
       <Text className="text-base text-gray-100 font-pmedium">{title}</Text>
-      <View className="border-2 border-black-200 w-full h-16 px-4 bg-black-100 rounded-2xl focus:border-secondary items-center flex-row">
+      <View className="border-2 border-black-200 w-full h-16 px-4 bg-black-100 rounded-2xl focus:border-secondary items-center flex-row space-x-4">
         <TextInput
           className="flex-1 text-white font-psemibold"
           value={value}

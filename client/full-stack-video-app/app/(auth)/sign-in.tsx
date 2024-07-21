@@ -2,17 +2,22 @@ import { Image, ScrollView, Text, View } from "react-native";
 import React, { useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { images } from "@/constants";
-import FormField from "@/components/Form.component";
-import CustomButton from "@/components/CustomButton.component";
+import FormField from "@/components/customs/Form.component";
+import CustomButton from "@/components/customs/CustomButton.component";
 import { Link, router } from "expo-router";
 import * as Burnt from "burnt";
 import { useSignInValidator } from "@/hooks/useSignInValidator";
 import { signIn } from "@/lib/signIn";
+import { account } from "@/lib/appwrite.config";
+import { useGlobalContext } from "@/context/Global.provider";
+import { currentUser } from "@/lib/currentUser";
 const SignInPage = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
+
+  const { user, setIsLogged, setUser } = useGlobalContext();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const validate = useSignInValidator(form.email, form.password);
@@ -33,10 +38,11 @@ const SignInPage = () => {
         duration: 100,
       });
       try {
-        console.log("form", form.email, form.password);
         await signIn(form.email, form.password);
         //Global context
-
+        const user = await currentUser();
+        setUser(user);
+        setIsLogged(true);
         Burnt.dismissAllAlerts();
         router.replace("/home");
       } catch (error) {

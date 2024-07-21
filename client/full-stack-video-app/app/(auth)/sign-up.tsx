@@ -1,12 +1,14 @@
 import { View, Text, SafeAreaView, ScrollView, Image } from "react-native";
 import React, { useState } from "react";
 import { images } from "@/constants";
-import FormField from "@/components/Form.component";
-import CustomButton from "@/components/CustomButton.component";
+import FormField from "@/components/customs/Form.component";
+import CustomButton from "@/components/customs/CustomButton.component";
 import { Link, router } from "expo-router";
 import { useSignUpValidator } from "@/hooks/useSignUpValidator";
 import * as Burnt from "burnt";
 import { signUp } from "@/lib/signUp";
+import { useGlobalContext } from "@/context/Global.provider";
+import { currentUser } from "@/lib/currentUser";
 
 const SignUpPage = () => {
   const [form, setForm] = useState({
@@ -14,7 +16,7 @@ const SignUpPage = () => {
     email: "",
     password: "",
   });
-
+  const { user, setIsLogged, setUser } = useGlobalContext();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const validate = useSignUpValidator(form.userName, form.email, form.password);
   const handleSignUp = async () => {
@@ -34,8 +36,10 @@ const SignUpPage = () => {
         duration: 100,
       });
       try {
-        const res = await signUp(form.email, form.password, form.userName);
-        //Global context
+        await signUp(form.email, form.password, form.userName);
+        const res = await currentUser();
+        setUser(res);
+        setIsLogged(true);
         Burnt.dismissAllAlerts();
         Burnt.alert({
           title: "Success",

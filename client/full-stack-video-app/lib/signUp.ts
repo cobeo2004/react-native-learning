@@ -1,5 +1,5 @@
 import { ID } from "react-native-appwrite";
-import { account, avatars, config, databases } from "./appwrite.config";
+import { account, avatars, client, config, databases } from "./appwrite.config";
 import { signIn } from "./signIn";
 
 export const signUp = async (email: string, password: string, username: string) => {
@@ -28,7 +28,6 @@ export const signUp = async (email: string, password: string, username: string) 
                 avatar: avatarUrl,
             }
         );
-
         return newUser;
     } catch (error) {
         throw new Error(error as string);
