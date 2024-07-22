@@ -9,7 +9,6 @@ import { useGlobalContext } from "@/context/Global.provider";
 
 const ListHeaderComponent = () => {
   const { user } = useGlobalContext();
-  console.log(user);
   const [latestPosts, _, fetch] = useInteractAppWrite(getLatestPosts);
   return (
     <View className="my-6 mx-4 space-y-6">

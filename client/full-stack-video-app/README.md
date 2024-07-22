@@ -1,6 +1,6 @@
-# Welcome to your Expo app 👋
+# Full stack AI video application using Appwrite and Expo 👋
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This is an Full Stack AI Video application project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app) and using [`Appwrite`](https://appwrite.io) as the main back-end.
 
 ## Get started
 
@@ -10,7 +10,17 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
    npm install
    ```
 
-2. Start the app
+2. Create `.env` file and add the following configurations
+   ```zsh title=".env"
+   EXPO_PUBLIC_APPWRITE_ENDPOINT=https://cloud.appwrite.io/v1
+   EXPO_PUBLIC_APPWRITE_PLATFORM="Your Appwrite Platform"
+   EXPO_PUBLIC_APPWRITE_PROJECTID="Your Appwrite Project ID"
+   EXPO_PUBLIC_APPWRITE_DATABASEID="Your Appwrite Database ID"
+   EXPO_PUBLIC_APPWRITE_USERCOLLECTIONID="Your Appwrite User Collection ID"
+   EXPO_PUBLIC_APPWRITE_VIDEOCOLLECTIONID="Your Appwrite Video Collection ID"
+   EXPO_PUBLIC_APPWRITE_STORAGEBUCKETID="Your Appwrite Storage Bucket ID"
+   ```
+3. Start the app
 
    ```bash
     npx expo start

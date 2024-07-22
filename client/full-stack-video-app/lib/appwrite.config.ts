@@ -1,13 +1,13 @@
 import { Account, Avatars, Client, Databases, Storage } from "react-native-appwrite";
 
 export const AppWriteConfig = {
-    endpoint: 'https://cloud.appwrite.io/v1',
-    platform: 'com.simonorg.sena',
-    projectId: '6697624c000101edc371',
-    databaseId: '66976373001be3929a11',
-    userCollectionId: '6697638c002fe349c0b1',
-    videoCollectionId: '669763a0003ab0c1e83d',
-    storageBucketId: '669764900025770612b1'
+    endpoint: process.env.EXPO_PUBLIC_APPWRITE_ENDPOINT as string,
+    platform: process.env.EXPO_PUBLIC_APPWRITE_PLATFORM as string,
+    projectId: process.env.EXPO_PUBLIC_APPWRITE_PROJECTID as string,
+    databaseId: process.env.EXPO_PUBLIC_APPWRITE_DATABASEID as string,
+    userCollectionId: process.env.EXPO_PUBLIC_APPWRITE_USERCOLLECTIONID as string,
+    videoCollectionId: process.env.EXPO_PUBLIC_APPWRITE_VIDEOCOLLECTIONID as string,
+    storageBucketId: process.env.EXPO_PUBLIC_APPWRITE_STORAGEBUCKETID as string,
 };
 
 const client = new Client();
